@@ -680,3 +680,20 @@ fill: #fff;
 
     }
 }
+.img-block {
+    position: relative;
+}
+
+.details{
+    display: none;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: pink;
+}
+
+.img-block:hover > .details {
+    display: flex;
+}

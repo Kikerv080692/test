@@ -1,4 +1,5 @@
 // script for tab
+const imgContainer = document.querySelector('.img-container')
 const tabHeaders = document.querySelectorAll('.tabs-title') // [] pseudolist
 const contentBoxes = document.querySelectorAll('.tabs-item')
 const tabHeadersArr = Array.from(tabHeaders) // real list
@@ -25,7 +26,7 @@ const countSlide = document.querySelectorAll('.person')
 const sliderLeft = document.querySelector('.slider-left')
 const sliderRight = document.querySelector('.slider-right')
 
-const rendActive = () => {
+const rendActive = (numActive) => {
     countSlide.forEach((el) => {
         el.classList.remove('active')
     })
@@ -38,21 +39,129 @@ const rendActive = () => {
         document.querySelector('.slide-active .people-foto').innerHTML = img 
 }
 
-rendActive()
+rendActive(0)
+
+for (let i = 0; i < countSlide.length; i++) {
+    countSlide[i].addEventListener("click", function () {
+        rendActive(i)
+    })
+
+}
+
+
 
 sliderLeft.addEventListener('click', () => {
     if(numActive > 0){
         numActive--
     }
-    rendActive()
+    rendActive(numActive)
 })
 sliderRight.addEventListener('click', () => {
     if(numActive < countSlide.length -1){
         numActive++
     }
-    rendActive()
+    rendActive(numActive)
 })
 //-------------------------------------------------------
+
+
+
+
+let cards = [
+    {
+        image: "work-1.jpg",
+        link: "/cat3.html",
+        filter: "web",
+    },
+    {
+        image: "work-2.jpg",
+        link: "/cat3.html",
+        filter: "design",
+    },
+    {
+        image: "work-3.jpg",
+        link: "/cat3.html",
+        filter: "web",
+    },
+    {
+        image: "work-4.jpg",
+        link: "/cat3.html",
+        filter: "landing",
+    },
+    {
+        image: "work-5.jpg",
+        link: "/cat3.html",
+        filter: "wordpress",
+    },
+    {
+        image: "work-2.jpg",
+        link: "/cat3.html",
+        filter: "web",
+    },
+    {
+        image: "work-2.jpg",
+        link: "/cat3.html",
+        filter: "web",
+    },
+    {
+        image: "work-2.jpg",
+        link: "/cat3.html",
+        filter: "web",
+    },
+    {
+        image: "work-2.jpg",
+        link: "/cat3.html",
+        filter: "web",
+    },
+    {
+        image: "work-2.jpg",
+        link: "/cat3.html",
+        filter: "web",
+    },
+    {
+        image: "work-2.jpg",
+        link: "/cat5.html",
+        filter: "web",
+    },
+    {
+        image: "work-2.jpg",
+        link: "/cat3.html",
+        filter: "web",
+    },
+    {
+        image: "work-2.jpg",
+        link: "/cat3.html",
+        filter: "web",
+    },
+    {
+        image: "work-2.jpg",
+        link: "/cat3.html",
+        filter: "web",
+    },
+
+]
+
+
+
+
+cards.forEach((card)=>{
+    let template = ` 
+<div class="img-block">
+    <img data-filter="${card.filter}" class="amazing-work-img" src="./images/fotoWork/${card.image}" alt="">
+    <div class="details">
+        <a href="${card.link}">link</a>
+        <h2>alsdfkj</h2>
+    </div>
+</div>
+`
+imgContainer.innerHTML += template
+})
+
+
+
+
+
+
 
 
 const tabsWork = document.querySelectorAll('.amazing-work .tabs-list li')
@@ -96,3 +205,7 @@ document.querySelector('.amazing-work-control .btn').addEventListener('click', (
     })
     event.target.style.display = 'none'
 })
+
+
+
+
